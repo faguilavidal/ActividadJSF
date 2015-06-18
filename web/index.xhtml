@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <table border="0" align="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <h:outputLink  value="javascript:void(0)" onclick="PF('login').show();" title="Login" >
+                            <h3>Login</h3>
+                        </h:outputLink>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+    <p:growl id="grow1" sticky="true" showDetail="true" life="3000"/>
+    
+    <p:dialog header="Login" widgetVar="login" resizable="false" >
+        <h:panelGrid columns="2" cellspacing="5" >
+            <h:outputLabel for="Username" value="Username: " />
+            <h:inputText id="username" value="#{login.username}" required="true" label="username"/>
+            <h:outputLabel for="Password" value="Password: " />
+            <h:inputText id="password" value="#{login.password}" required="true" label="password"/>
+            <f:facet name="footer">
+                <p:commandButton  value="Login" update="grow1" actionListener="#{login.login}"  action="Producto.xhtml" oncomplete="FuncionLogin(xhr, status, args)"></p:commandButton>
+            </f:facet>
+        </h:panelGrid>
+    </p:dialog>
+    </h:form>
+        <h:form>
+        <table border="0" align="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <h:outputLink value="javascript:void(0)" onclick="PF('Registro').show();" title="Registro" >
+                            <h3>Registro</h3>
+                        </h:outputLink>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+    <p:growl id="grow2" sticky="true" showDetail="true" life="3000"/>
+    
+    <p:dialog header="Registro" widgetVar="Registro" resizable="false" >
+        <h:panelGrid columns="2" cellspacing="5" >
+            <h:outputLabel for="Username" value="Username: " />
+            <h:inputText id="username" value="#{login.username}" required="true" label="username"/>
+            <h:outputLabel for="Password" value="Password: " />
+            <h:inputText id="password" value="#{login.password}" required="true" label="password"/>
+            <h:outputLabel for="Email" value="Email: " />
+            <h:inputText id="email" value="#{login.email}" required="true" label="email"/>
+            <f:facet name="footer">
+                <p:commandButton value="Login" update="grow2" actionListener="#{login.registro}" oncomplete="FuncionRegistro(xhr, status, args)"></p:commandButton>
+            </f:facet>
+        </h:panelGrid>
+    </p:dialog>
+    </h:form>
+        
+        <script type="text/javascript">
+            function FuncionLogin(xhr,status,args)
+            {
+                if(args.validationFailed || !args.loggedIn)
+                {
+                    PF('login').jq.effect("shake",{time:5},100);
+                }
+                else
+                {
+                    PF('login').hide();
+                    $('#loginLink').fadeOut();
+                }
+            }
+        </script>
+        
+        <script type="text/javascript">
+            function FuncionRegistro(xhr,status,args)
+            {
+                if(args.validationFailed || !args.loggedIn)
+                {
+                    PF('Registro').jq.effect("shake",{time:5},100);
+                    
+                }
+                else
+                {
+                    PF('Registro').hide();
+                    $('#loginLink').fadeOut();
+                }
+            }
+        </script>
+    </h:body>
+</html>
+
