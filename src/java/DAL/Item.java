@@ -69,7 +69,7 @@ public class Item
     {
         try
         {
-            String sql = "delete articulo where nombre = ?";
+            String sql = "delete articulo where item = ?";
             PreparedStatement update = conn.crearSentencia(sql);
             
             update.setString(1, i.getItem());

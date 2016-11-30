@@ -41,7 +41,7 @@ public class Login
     {
         try
         {
-            String sql = "select * from usuario where usuario = ? and contraseña = ?";
+            String sql = "select * from usuario where username = ? and password = ?";
             PreparedStatement select = conn.crearSentencia(sql);
             
             select.setString(1, nombre);

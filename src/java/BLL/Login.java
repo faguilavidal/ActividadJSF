@@ -1,6 +1,5 @@
 package BLL;
 
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -10,7 +9,7 @@ import org.primefaces.context.RequestContext;
 
 /**
  *
- * @author Matias
+ * @author fabian
  */
 @ManagedBean
 
@@ -69,7 +68,6 @@ public class Login
             {
                 loggedIn = true;
                 mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO,"Bienvenido",username);
-                
             }
             else
             {
